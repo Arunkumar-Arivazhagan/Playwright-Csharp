@@ -1,0 +1,51 @@
+# Compiled output
+/bin
+/obj
+/node
+ApplicationTest/bin/
+ApplicationTest/obj/
+Framework/bin/
+Framework/obj/
+.DS_Store
+
+# NuGet related
+packages/
+*.nupkg
+*.snupkg
+global.json
+nuget.config
+.packageslock.json
+
+# Test result files
+TestResults/
+*.trx
+*.coverage
+*.datacollection
+
+# Playwright-specific
+playwright-report/
+.playwright/
+
+# User-specific files and folders (if any)
+*.user
+*.suo
+*.vs/
+
+# Editor-specific files (Visual Studio/Rider)
+.idea/
+*.sln.docstates
+*.vssscc
+*.vspscc
+
+# Temporary files
+*.tmp
+tmp/
+
+# Build artifacts
+_PublishedWebsites/
+publish/
+
+# Package manager lock files (if you're using others)
+yarn.lock
+package-lock.json
+.DS_Store
