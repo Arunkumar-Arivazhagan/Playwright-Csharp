@@ -16,7 +16,8 @@ public class Startup
             .AddScoped<IPlaywrightDriverInitializer, PlaywrightDriverInitializer>()
             .AddScoped<IContactPage, ContactPage>()
             .AddScoped<IHomePage, HomePage>()
-            // .AddScoped<IShopPage, ShopPage>()
+            .AddScoped<IShopPage, ShopPage>()
+            .AddScoped<ICartPage, CartPage>()
             .AddScoped<ITestFixtureBase, TestFixtureBase>();
     }
 }

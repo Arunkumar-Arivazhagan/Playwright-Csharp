@@ -1,5 +1,6 @@
 using ApplicationTest.Pages;
 using AutoFixture.Xunit2;
+using FluentAssertions;
 using Framework.Config;
 using Framework.Driver;
 using Microsoft.Playwright;
@@ -13,16 +14,17 @@ public class UnitTest
     private readonly TestSettings _testSettings;
     private readonly IContactPage _contactPage;
     private readonly IHomePage _homePage;
-    // private readonly IShopPage _shopPage;
+    private readonly IShopPage _shopPage;
+    private readonly ICartPage _cartPage;
 
-    public UnitTest(IPlaywrightDriver playwrightDriver, TestSettings testSettings, IContactPage contactPage, IHomePage homePage)
-    //IShopPage shopPage
+    public UnitTest(IPlaywrightDriver playwrightDriver, TestSettings testSettings, IContactPage contactPage, IHomePage homePage, IShopPage shopPage, ICartPage cartPage)
     {
         _playwrightDriver = playwrightDriver;
         _testSettings = testSettings;
         _contactPage = contactPage;
         _homePage = homePage;
-        // _shopPage = shopPage;
+        _shopPage = shopPage;
+        _cartPage = cartPage;
     }
 
     [Fact]
@@ -79,5 +81,37 @@ public class UnitTest
         var successMessage = _contactPage.CheckSuccessMessage(forename);
         await Assertions.Expect(successMessage).ToBeVisibleAsync();
     }
-    
+
+    [Fact]
+    public async Task TestCase3()
+    {
+        //Navigate
+        var page = await _playwrightDriver.Page;
+        await page.GotoAsync(_testSettings.ApplicationUrl);
+        await _homePage.ShopBtnClick();
+
+        // Define the products to buy with their locators and quantities
+        var productsToBuy = new Dictionary<string, Tuple<string, int>>()
+        {
+            { "Teddy Bear", Tuple.Create("#product-1", 3) },
+            { "Stuffed Frog", Tuple.Create("#product-2", 2) },
+            { "Fluffy Bunny", Tuple.Create("#product-4", 5) }
+        };
+
+        // Buy the products
+        foreach (var product in productsToBuy)
+        {
+            string productName = product.Key;
+            string productLocator = product.Value.Item1;
+            int quantity = product.Value.Item2;
+
+            for (int i = 0; i < quantity; i++)
+            {
+                await page.Locator(productLocator).GetByRole(AriaRole.Link, new() { Name = "Buy" }).ClickAsync();
+            }
+        }
+
+        // Go to the cart page
+        await _shopPage.GoToCart();
+    }
 }

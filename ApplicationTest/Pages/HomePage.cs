@@ -17,6 +17,10 @@ public class HomePage : IHomePage
     public HomePage(IPlaywrightDriver playwrightDriver) => _page = playwrightDriver.Page.Result;
     
     public async Task HomeBtnClick() => await _page.GetByRole(AriaRole.Link, new() { Name = "Home" }).ClickAsync();
-    public async Task ShopBtnClick() => await _page.GetByRole(AriaRole.Link, new() { Name = "Shop" }).ClickAsync();
+    public async Task ShopBtnClick() => await _page.GetByRole(AriaRole.Link, new() { 
+            Name = "Shop",
+            Exact = true 
+        })
+        .ClickAsync();
     public async Task ContactBtnClick() => await _page.GetByRole(AriaRole.Link, new() { Name = "Contact" }).ClickAsync();
 }

@@ -1,4 +1,3 @@
-using System.Net.Http.Headers;
 using Framework.Driver;
 using Microsoft.Playwright;
 
@@ -18,7 +17,6 @@ public interface IContactPage
 public class ContactPage : IContactPage
 {
     private readonly IPage _page;
-
     public ContactPage(IPlaywrightDriver playwrightDriver) => _page = playwrightDriver.Page.Result;
 
     private ILocator _forenameLocator => _page.GetByRole(AriaRole.Textbox, new() { Name = "Forename *" });
@@ -51,5 +49,4 @@ public class ContactPage : IContactPage
     {
         return _page.GetByText($"Thanks {forename}, we appreciate");
     }
-    
 }
