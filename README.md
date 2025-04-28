@@ -21,7 +21,7 @@ Before you can run the tests, ensure you have the following installed:
 1.  **Clone the repository:**
 
     ```bash
-    git clone https://github.com/Arunkumar-Arivazhagan/Playwright-Csharp.git
+    git clone <repository_url>
     cd Playwright-csharp
     ```
 
@@ -89,9 +89,6 @@ The repository includes a GitHub Actions workflow (`.github/workflows/dotnet.yml
 
 * The workflow uses the `mcr.microsoft.com/playwright/dotnet` Docker image, which comes with the necessary Playwright browsers and dependencies pre-installed.
 * It restores, builds, and runs the tests within the container in the GitHub Actions environment.
-
-## Reporting
-* Playwright with C# does not have a Reporting system (like playwright with typescript), but third party reporting framework like Extent Reports can be added. Those are effective if the code is written in BDD fashion.
 
 ## Contributing
 
