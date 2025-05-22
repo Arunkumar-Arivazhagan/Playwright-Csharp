@@ -92,13 +92,3 @@ The repository includes a GitHub Actions workflow (`.github/workflows/dotnet.yml
 
 ## Reporting
 * Playwright with C# does not have a Reporting system (like playwright with typescript), but third party reporting framework like Extent Reports can be added. Those are effective if the code is written in BDD fashion.
-
-## Contributing
-
-Contributions to this project are welcome! Please follow these guidelines:
-
-1.  Fork the repository.
-2.  Create a new branch for your feature or bug fix.
-3.  Make your changes and write clear, concise commit messages.
-4.  Test your changes thoroughly.
-5.  Create a pull request against the `main` branch.
